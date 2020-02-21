@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
 
- get "/create_user" do
+  get "/create_user" do
     erb :create_user
   end
 
@@ -38,7 +38,14 @@ class UsersController < ApplicationController
     end
   end
   
-  
+  get '/logout' do
+    if is_logged_in?
+      session.clear
+      redirect to '/login'
+    else
+      redirect to '/'
+    end
+  end
  
 
 end
